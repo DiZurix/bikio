@@ -17,7 +17,8 @@ h1
 }
 h2
 {
-    color:#444;
+    color:#fff;
+    text-shadow: #000000 2px 2px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
     font-size: 55px;
 }
 h3
@@ -91,8 +92,8 @@ header nav ul li a
 
 #mainimage
 {
-    height: 580px;
-    background: url('img/laptop.jpg') center;
+    height: 520px;
+    background: url('img/abris.jpg') center;
 }
 #mainimage h2
 {
