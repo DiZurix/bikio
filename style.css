@@ -155,7 +155,10 @@ header nav ul li a
  {
     background: url(img/joystick.png) no-repeat top center;
  }
-
+ #step4
+ {
+    background: url(img/bikio.png) no-repeat top center;
+ }
  #possibilities
  {
      background-color: #efefef;

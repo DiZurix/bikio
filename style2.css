@@ -22,6 +22,10 @@ h1 {
     margin-inline-end: 0px;
     font-weight: bold;
 }
+#step1
+ {
+    background: url(img/bikio.png) no-repeat top center;
+ }
 header
 {
     height: 120px;
