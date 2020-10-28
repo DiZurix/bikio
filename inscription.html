@@ -9,13 +9,14 @@
 <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans:400,600'>
 
       <link rel="stylesheet" href="Formulaire.css">
-
+      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script src="Formulaire.js"></script>
   
 </head>
 
 <body>
   
-<main role="main">
+<main role="main" class="html">
   <button class="popup-trigger btn" id="popup-trigger"><span>Inscription<i class="fa fa-plus-square-o"></i></span></button>
 </main>
 <div class="overlay" id="overlay">
@@ -23,7 +24,7 @@
   <div class="overlay-content" id="overlay-content">
     <div class="fa fa-times fa-lg overlay-close" id="overlay-close"></div>
     <h1 class="main-heading">Inscription</h1>
-    <h3 class="blurb">Crée un compte est gratuit &mdash;</h3><span class="blurb-tagline"></span>
+    <h3 class="blurb">Créé un compte est gratuit</h3><span class="blurb-tagline"></span>
     <form class="signup-form" method="post" action="#" novalidate="novalidate">
       <label for="signup-name">Pseudo</label>
       <input id="signup-name" type="text" name="name" autocomplete="off"/>
@@ -31,15 +32,13 @@
       <input id="signup-email" type="email" name="email" autocomplete="off"/>
       <label for="signup-pw">Mot de passe</label>
       <input id="signup-pw" type="password" name="pw" autocomplete="off"/>
-      <label for="signup-cpw">Confirm mot de passe</label>
+      <label for="signup-cpw">Confirmez mot de passe</label>
       <input id="signup-cpw" type="password" name="cpw" autocomplete="off"/>
       <button class="btn btn-outline submit-btn"><span>s'inscrire</span></button>
     </form>
   </div>
 </div>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-    <script src="Formulaire.js"></script>
+  
 
 </body>
 </html>
