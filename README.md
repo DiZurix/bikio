@@ -1,5 +1,5 @@
-# projet-abri-station-VAE
-l'objectif est d'instrumenter un abri-station de charge de batteries de VAE (carte Arduino, carte réseau) afin d'obtenir des informations de fonctionnement : 
+# BIKIO
+L'objectif est d'instrumenter un abri-station de charge de batteries de VAE (carte Arduino, carte réseau) afin d'obtenir des informations de fonctionnement : 
     *  Pour les usagers
     *  Pour l'équipe de sécurité
     *  Pour le technicien de maintenance
