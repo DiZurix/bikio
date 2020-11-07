@@ -28,7 +28,7 @@ if(isset($_POST['forminscription']))
 						{
 							$insertmbr = $bdd->prepare("INSERT INTO membres(pseudo, email, password) VALUES (?,?,?)");
 							$insertmbr->execute(array($pseudo, $mail, $mdp));
-							$erreur="Votre compte a été créé. <a href=\"connexion_test.php\">Me connecter</a>";
+							$erreur="Votre compte a été créé. <a href=\"connexion.php\">Me connecter</a>";
 						}
 						else
 						{
