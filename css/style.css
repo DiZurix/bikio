@@ -93,7 +93,7 @@ header nav ul li a
 #mainimage
 {
     height: 520px;
-    background: url('img/abris.jpg') center;
+    background: url('../images/abris.jpg') center;
 }
 #mainimage h2
 {
@@ -145,19 +145,19 @@ header nav ul li a
 }
  #step1
  {
-    background: url(img/listen.png) no-repeat top center;
+    background: url(../images/listen.png) no-repeat top center;
  }
  #step2
  {
-    background: url(img/double-chevron.png) no-repeat top center;
+    background: url(../images/double-chevron.png) no-repeat top center;
  }
  #step3
  {
-    background: url(img/joystick.png) no-repeat top center;
+    background: url(../images/joystick.png) no-repeat top center;
  }
  #step4
  {
-    background: url(img/bikio.png) no-repeat top center;
+    background: url(../images/bikio.png) no-repeat top center;
  }
  #possibilities
  {
