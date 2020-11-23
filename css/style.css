@@ -31,6 +31,12 @@ h4
 font-size: 24px;
 color: #444;
 }
+h5
+{
+    float: left;
+    margin-left: 8px;
+    margin-top: 17px;
+}
 p
 {
     line-height: 20px;
@@ -54,6 +60,7 @@ a{
 {
     color: rgb(226, 111, 66);
 }
+
 .clear
 {
     clear: both;
@@ -70,9 +77,10 @@ header
 }
 header h1 
 {
-    float: right;
+    float: left;
     margin-top: 10px;
 }
+
 header nav
 {
     float: right;
@@ -146,15 +154,15 @@ header nav ul li a
 }
  #step1
  {
-    background: url(../images/listen.png) no-repeat top center;
+    background: url(../images/loupe.png) no-repeat top center;
  }
  #step2
  {
-    background: url(../images/double-chevron.png) no-repeat top center;
+    background: url(../images/padlock.png) no-repeat top center;
  }
  #step3
  {
-    background: url(../images/joystick.png) no-repeat top center;
+    background: url(../images/call.png) no-repeat top center;
  }
  #step4
  {
