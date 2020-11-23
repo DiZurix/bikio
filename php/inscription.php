@@ -28,7 +28,7 @@ if(isset($_POST['forminscription']))
 						{
 							$insertmbr = $bdd->prepare("INSERT INTO membres(pseudo, email, password) VALUES (?,?,?)");
 							$insertmbr->execute(array($pseudo, $mail, $mdp));
-							$erreur="Votre compte a été créé. <a href=\"connexion.php\">Me connecter</a>";
+							$erreur="Votre compte a été créé. <a href=\"connexion_test_co.php\">Me connecter</a>";
 						}
 						else
 						{
@@ -62,73 +62,54 @@ if(isset($_POST['forminscription']))
 }
 
 ?>
-<html>
-	<head>
-		<title>Inscription</title>
-		<meta charset="utf-8">
-	</head>
-	<body>
-		<div align="center">
-			<h2>Inscription</h2>
-			</br></br>
-			<form method="POST" action="">
-				<table>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans:400,600'>
 
-					<tr>
-						<td align="right">
-							<label for="pseudo"> Pseudo : </label>
-						</td>
-						<td align="right">
-							<input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) {echo $pseudo;}?>"/>
-						</td>
-					</tr>
+      <link rel="stylesheet" href="Formulaire.css">
+      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script src="Formulaire.js"></script>
+  
+</head>
 
-					<tr>
-						<td align="right">
-							<label for="mail"> Mail : </label>
-						</td>
-						<td align="right">
-							<input type="email" placeholder="Votre mail" id="mail" name="mail" value="<?php if(isset($mail)) {echo $mail;}?>"/>
-						</td>
-					</tr>
-
-					<tr>
-						<td align="right">
-							<label for="mail2"> Confirmation du mail : </label>
-						</td>
-						<td align="right">
-							<input type="email" placeholder="Votre mail" id="mail2" name="mail2" value="<?php if(isset($mail2)) {echo $mail2;}?>"/>
-						</td>
-					</tr>
-
-					<tr>
-						<td align="right">
-							<label for="mdp"> Mot de passe : </label>
-						</td>
-						<td align="right">
-							<input type="password" placeholder="Votre mot de passe" id="mdp" name="mdp"/>
-						</td>
-					</tr>
-
-					<tr>
-						<td align="right">
-							<label for="mdp2"> Confirmation du mot de passe : </label>
-						</td>
-						<td align="right">
-							<input type="password" placeholder="Confirmation du mdp" id="mdp2" name="mdp2"/>
-						</td>
-					</tr>
-
-				</table>
-				</br>
-				<input type="submit" name="forminscription" value="Inscription"/>
-			</form>
-			<?php 
+<body>
+  
+<main role="main" class="html">
+  <button class="popup-trigger btn" id="popup-trigger"><span>Inscription<i class="fa fa-plus-square-o"></i></span></button>
+</main>
+<div class="overlay" id="overlay">
+  <div class="overlay-background" id="overlay-background"></div>
+  <div class="overlay-content" id="overlay-content">
+    <div class="fa fa-times fa-lg overlay-close" id="overlay-close"></div>
+    <h1 class="main-heading">Inscription</h1>
+    <h3 class="blurb">Créer un compte est gratuit</h3><span class="blurb-tagline"></span>
+    <form class="signup-form" method="post" action="#" novalidate="novalidate">
+      <label for="signup-name">Pseudo</label>
+      <input id="signup-name" type="text" name="pseudo" value="<?php if(isset($pseudo)) {echo $pseudo;}?>" autocomplete="off"/>
+      <label for="signup-email">Adresse mail</label>
+      <input id="signup-email" type="email" name="mail" value="<?php if(isset($mail)) {echo $mail;}?>" autocomplete="off"/>
+      <label for="signup-email">Confirmer votre adresse mail</label>
+      <input id="signup-email" type="email" name="mail2" value="<?php if(isset($mail2)) {echo $mail2;}?>" autocomplete="off"/>
+      <label for="signup-pw">Mot de passe</label>
+      <input id="signup-pw" type="password" name="mdp" autocomplete="off"/>
+      <label for="signup-cpw">Confirmer mot de passe</label>
+      <input id="signup-cpw" type="password" name="mdp2" autocomplete="off"/>
+      <button type="submit" name="forminscription" value="Inscription" class="btn btn-outline submit-btn"><span>s'inscrire</span></button>
+    </form>
+    <?php 
 			if(isset($erreur))
 			{
 				echo '<font color="red">'.$erreur.'</font>';
 			}
 			?>
-		</div>
-	</body>
+  </div>
+</div>
+  
+
+</body>
 </html>
