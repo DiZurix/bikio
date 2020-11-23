@@ -4,16 +4,21 @@
         <meta charset="utf-8">
         <link href="..\css\style.css" rel="stylesheet">
         <link href="http://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
-        <title>computer science Agency</title>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="..\javascript\Fo.js"></script>
+        <title>Bikio</title>
         <body>
             <header>
-               
                 <div class="wrapper">
                     <h1 ><a href="#"><img src="..\images\bikio.png" alt="good vybes" /></a><span class="bleu"> .</span></h1>
                     <nav>
                         <ul>
                             <li> <a href="index.html">Accueil</a></li>
-                            <li> <a href="inscription.html">Inscription</a></li>
+                            <li><div id="dialog" title="Inscrition">
+                                <p>juste connecte toi stp.</p>
+                              </div>
+                              <button id="opener">Inscription</button></li>
                             <li> <a href="Abonnement.html">Abonnement</a></li>
                         </ul>
 
@@ -24,7 +29,6 @@
             <section id="mainimage">
                 <div class="wrapper">
                     <h2>  abri-station de charge <br> <strong> de batteries de VAE </strong></h2>
-                    <a href="#" class="button1">Par ici</a>
                 </div>
             </section>
 
@@ -51,42 +55,16 @@
 
             <section id="possibilities">
                 <div class="wrapper">
-                    <article style="background-image: url(..\images\computer-1245714_1920.jpg);">
-                        <div class="overlay">
-                            <h4>Plutôt blog </h4>
-                            <p> <small>partagez le meilleur avec ce qui vous suivent </small></p>
-                            <a href="#" class="button2">plus d'infos</a>
-                        </div>
-                        
+                            <h3>Emplacement de L'Abri-Station</h3>
+                            <p> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2769.360570225975!2d4.069469715576986!3d46.04390577911218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f40f43139c1a71%3A0x86f6a14095558a58!2sIUT%20de%20Roanne!5e0!3m2!1sfr!2sfr!4v1606037266463!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></p>
                     </article>
-                    <article style="background-image: url(..\images\pexels-negative-space-34600.jpg);">
-                        <div class="overlay">
-                            <h4>Plutôt intranets </h4>
-                            <p> <small> échangez avec vos collaborateurs pour mieux travailler ensemble </small></p>
-                            <a href="#" class="button2">plus d'infos</a>
-                        </div>
-                        
-                    </article>
+
                     <div class="clear"></div>
                 </div>
             </section>
-
-            <section id="contact">
-                <div class="wrapper">
-
-                    <form>
-                        <label for="name">Nom</label>
-                        <input type="text" id="name" placeholder="Votre nom">
-                        <label for="email">Email</label>
-                        <input type="text" id="email" placeholder="Votre email">
-                        <input type="submit" value="ok" class="button3">
-                    </form>
-                </div>
-            </section>
-
             <footer>
-                <div class="wrapper">
-                    <h1> <img src="..\images\bikio.png" alt="good vybes" /><span class="bleu"> .</span></h1>
+                <div class="wrapper2s">
+                    <h1> <img src="..\images\bikiobas.png" alt="good vybes" /><span class="bleu"> .</span></h1>
                     <div class="copy">Copyright © 2020. Tous droits réservés</div>
                 </div>
             </footer>
