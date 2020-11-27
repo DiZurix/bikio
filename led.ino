@@ -1,5 +1,5 @@
-const int RED_LED = 11;
-const int GREEN_LED = 10;
+//const int RED_LED = 11;
+//const int GREEN_LED = 10;
 
 void SWITCH_LED (const int LED){
     digitalWrite(LED, HIGH);
