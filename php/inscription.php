@@ -71,9 +71,9 @@ if(isset($_POST['forminscription']))
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans:400,600'>
 
-      <link rel="stylesheet" href="Formulaire.css">
+      <link rel="stylesheet" href="..\css\Formulaire.css">
       <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-      <script src="Formulaire.js"></script>
+      <script src="..\javascript\Formulaire.js"></script>
   
 </head>
 
