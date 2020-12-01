@@ -295,14 +295,3 @@ footer h1
     font-weight: bold;
 }
 
-
-#opener {
-    background-color: #efefef;
-    font-size: 15px;
-    border: none;
-    outline:none;
-    text-transform: uppercase;
-    font-weight:bold ;
-    margin-right: 25px;
-    color: #444;;
-}

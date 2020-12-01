@@ -1,17 +1,15 @@
 <?php
 
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=bikio', 'root', '');
-
-if(isset($_POST['forminscription']))
-{
-	$pseudo=htmlspecialchars($_POST['pseudo']);
+$pseudo=htmlspecialchars($_POST['pseudo']);
 	$mail=htmlspecialchars($_POST['mail']);
 	$mail2=htmlspecialchars($_POST['mail2']);
 	$mdp=sha1($_POST['mdp']);
 	$mdp2=sha1($_POST['mdp2']);
-	if(!empty($_POST['pseudo']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2']))
+if(isset($_POST['forminscription']))
+{
+	if(!empty($_POST['pseudo']) and !empty($_POST['mail']) and !empty($_POST['mail2']) and !empty($_POST['mdp']) and !empty($_POST['mdp2']))
 	{
-
 		$pseudolength=strlen($pseudo);
 		if($pseudolength<=20)
 		{
@@ -59,6 +57,8 @@ if(isset($_POST['forminscription']))
 	{
 	$erreur= "Tous les champs doivent être complétés correctement.";
 	}
+	
+	
 }
 
 ?>
@@ -77,7 +77,9 @@ if(isset($_POST['forminscription']))
   
 </head>
 
-<body>
+<body onload="if($('#error') !== null){
+  $('#overlay').addClass('open');
+}">
   
 <main role="main" class="html">
   <button class="popup-trigger btn" id="popup-trigger"><span>Inscription<i class="fa fa-plus-square-o"></i></span></button>
@@ -90,15 +92,15 @@ if(isset($_POST['forminscription']))
     <h3 class="blurb">Créer un compte est gratuit</h3><span class="blurb-tagline"></span>
     <form class="signup-form" method="post" action="#" novalidate="novalidate">
       <label for="signup-name">Pseudo</label>
-      <input id="signup-name" type="text" name="pseudo" value="<?php if(isset($pseudo)) {echo $pseudo;}?>" autocomplete="off"/>
+      <input id="signup-name" type="text" name="pseudo" value="<?php if(isset($pseudo)) {echo $pseudo;}?>" autocomplete="off" required />
       <label for="signup-email">Adresse mail</label>
-      <input id="signup-email" type="email" name="mail" value="<?php if(isset($mail)) {echo $mail;}?>" autocomplete="off"/>
+      <input id="signup-email" type="email" name="mail" value="<?php if(isset($mail)) {echo $mail;}?>" autocomplete="off" required/>
       <label for="signup-email">Confirmer votre adresse mail</label>
-      <input id="signup-email" type="email" name="mail2" value="<?php if(isset($mail2)) {echo $mail2;}?>" autocomplete="off"/>
+      <input id="signup-email" type="email" name="mail2" value="<?php if(isset($mail2)) {echo $mail2;}?>" autocomplete="off" required/>
       <label for="signup-pw">Mot de passe</label>
-      <input id="signup-pw" type="password" name="mdp" autocomplete="off"/>
+      <input id="signup-pw" type="password" name="mdp" autocomplete="off" required/>
       <label for="signup-cpw">Confirmer mot de passe</label>
-      <input id="signup-cpw" type="password" name="mdp2" autocomplete="off"/>
+      <input id="signup-cpw" type="password" name="mdp2" autocomplete="off" required/>
       <button type="submit" name="forminscription" value="Inscription" class="btn btn-outline submit-btn"><span>s'inscrire</span></button>
     </form>
     <?php 
