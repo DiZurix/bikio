@@ -1,13 +1,14 @@
 <?php
-
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=bikio', 'root', '');
-$pseudo=htmlspecialchars($_POST['pseudo']);
-	$mail=htmlspecialchars($_POST['mail']);
-	$mail2=htmlspecialchars($_POST['mail2']);
-	$mdp=sha1($_POST['mdp']);
-	$mdp2=sha1($_POST['mdp2']);
+
+
 if(isset($_POST['forminscription']))
 {
+$pseudo=htmlspecialchars($_POST['pseudo']);
+$mail=htmlspecialchars($_POST['mail']);
+$mail2=htmlspecialchars($_POST['mail2']);
+$mdp=sha1($_POST['mdp']);
+$mdp2=sha1($_POST['mdp2']);
 	if(!empty($_POST['pseudo']) and !empty($_POST['mail']) and !empty($_POST['mail2']) and !empty($_POST['mdp']) and !empty($_POST['mdp2']))
 	{
 		$pseudolength=strlen($pseudo);
@@ -26,7 +27,7 @@ if(isset($_POST['forminscription']))
 						{
 							$insertmbr = $bdd->prepare("INSERT INTO membres(pseudo, email, password) VALUES (?,?,?)");
 							$insertmbr->execute(array($pseudo, $mail, $mdp));
-							$erreur="Votre compte a été créé. <a href=\"connexion_test_co.php\">Me connecter</a>";
+							$erreur="Votre compte a été créé. <a href=\"..\php\connexion.php\">Me connecter</a>";
 						}
 						else
 						{
@@ -40,7 +41,7 @@ if(isset($_POST['forminscription']))
 				}
 				else
 				{
-					$erreur="Votre adresse mail n'est pas valide.";
+					$erreur="Votre adresse mail n est pas valide.";
 				}
 			}
 			else
@@ -60,7 +61,6 @@ if(isset($_POST['forminscription']))
 	
 	
 }
-
 ?>
 <html >
 <head>
