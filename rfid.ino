@@ -83,7 +83,7 @@ void setup(void) {
   pinMode(RED_LED, OUTPUT);   //LED
   pinMode(GREEN_LED, OUTPUT); //LED
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C); //LCD
-  init_lcd();
+  lcd_logo();
 
   while (!Serial) delay(10); // for Leonardo/Micro/Zero
 
@@ -163,16 +163,16 @@ void loop(void) {
           Serial.println("Reading Block 4:");
           nfc.PrintHexChar(data, 16);
 
-          for (int i=0; i<5; i++){
-            if (data[i] == uid_verifnfc[i]){
-              good_uid++;
+          for (int i=0; i<5; i++){  //On effectue une boucle afin de vérifier si la carte RFID possède le tag 'bikio'
+            if (data[i] == uid_verifnfc[i]){ //On compare la valeur de la carte RFID à la variable initiée précédemment.
+              good_uid++; //Si la condition est vraie, on incrémente.
             }
           }
-          if (good_uid >= 5){
-              Serial.println("BIKIO RECORD");
-              SWITCH_LED(GREEN_LED);
+          if (good_uid >= 5){ //S'il possède le tag, on affiche un message de bienvenue et on active la led verte.
+            lcd_txt();  //On appelle la fonction qui permettra d'afficher le message de bienvenue.
+            SWITCH_LED(GREEN_LED); //On appelle la fonction qui permettra d'allumer la led verte.
           }
-          else{
+          else{ //Sinon, on active la led rouge
             SWITCH_LED(RED_LED);
           }
 
@@ -216,4 +216,5 @@ void loop(void) {
       }
     }
   }
+  lcd_logo();
 }
