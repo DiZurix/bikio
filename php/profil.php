@@ -32,7 +32,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 			if (!empty($userinfo['avatar']))
 			{	
 			?>
-			<img src="membres/avatars/<?php echo $userinfo['id'];if (file_exists("membres/avatars/".$userinfo['id'].'.png'))echo'.png';if (file_exists("membres/avatars/".$userinfo['id'].'.jpg'))echo'.jpg';if (file_exists("membres/avatars/".$userinfo['id'].'.jpeg'))echo'.jpeg';if (file_exists("membres/avatars/".$userinfo['id'].'.gif'))echo'.gif'?>" width="150"/>	
+			<img src="membres/avatars/<?php echo $userinfo['id'];if (file_exists("membres/avatars/".$userinfo['id'].'.png'))echo'.png';if (file_exists("membres/avatars/".$userinfo['id'].'.jpg'))echo'.jpg';if (file_exists("membres/avatars/".$userinfo['id'].'.jpeg'))echo'.jpeg';if (file_exists("membres/avatars/".$userinfo['id'].'.gif'))echo'.gif';?>" width="150"/>	
 			<?php
 			}
 			?>
