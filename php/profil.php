@@ -1,7 +1,13 @@
 <?php
-session_start();
 
+session_start();
+if(isset($_SESSION['id']) && !isset($_GET['id']))
+{
+	header('Location: profil.php?id='.$_SESSION['id']);
+}
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=bikio', 'root', '');
+
+
 
 if(isset($_GET['id']) AND $_GET['id'] > 0)
 {
@@ -9,6 +15,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 	$requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
 	$requser->execute(array($getid));
 	$userinfo = $requser->fetch()
+
 
 ?>
 <html>

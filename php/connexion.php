@@ -18,7 +18,7 @@ if(isset ($_POST['formconnect']))
 			$_SESSION['id'] = $userinfo['id'];
 			$_SESSION['pseudo'] = $userinfo['pseudo'];
 			$_SESSION['email'] = $userinfo['email'];
-			header('Location: profil.php?id='.$_SESSION['id']);
+			header('Location: ..\html\indexconnection.html');
 
 		}
 		else
