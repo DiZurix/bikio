@@ -40,8 +40,49 @@ if(isset($_SESSION['id']))
             $msg =" vos deux mots de passes ne correspondent pas";
         }
     }
-    
-?>
+
+    if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])) {
+        $tailleMax = 2097152;
+        $extensionsValides = array('jpg', 'jpeg', 'gif', 'png');
+        if($_FILES['avatar']['size'] <= $tailleMax) {
+           $extensionUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
+           if(in_array($extensionUpload, $extensionsValides)) {
+              $chemin = "membres/avatars/".$_SESSION['id'].".".$extensionUpload;
+              $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
+              if (file_exists("membres/avatars/".$_SESSION['id'].'.png') && $extensionUpload !='png')
+              {
+                  unlink("membres/avatars/".$_SESSION['id'].'.png');
+              }
+              if (file_exists("membres/avatars/".$_SESSION['id'].'.gif') && $extensionUpload !='gif')
+              {
+                  unlink("membres/avatars/".$_SESSION['id'].'.gif');
+              }
+              if (file_exists("membres/avatars/".$_SESSION['id'].'.jpeg') && $extensionUpload !='jpeg')
+              {
+                  unlink("membres/avatars/".$_SESSION['id'].'.jpeg');
+              }
+              if (file_exists("membres/avatars/".$_SESSION['id'].'.jpg') && $extensionUpload !='jpg')
+              {
+                  unlink("membres/avatars/".$_SESSION['id'].'.jpg');
+              }
+              if($resultat) {
+                 $updateavatar = $bdd->prepare('UPDATE membres SET avatar = :avatar WHERE id = :id');
+                 $updateavatar->execute(array(
+                    'avatar' => $_SESSION['id'].".".$extensionUpload,
+                    'id' => $_SESSION['id']
+                    ));
+                 header('Location: profil.php?id='.$_SESSION['id']);
+              } else {
+                 $msg = "Erreur durant l'importation de votre photo de profil";
+              }
+           } else {
+              $msg = "Votre photo de profil doit être au format jpg, jpeg, gif ou png";
+           }
+        } else {
+           $msg = "Votre photo de profil ne doit pas dépasser 2Mo";
+        }
+     }
+    ?>
 <html>
 	<head>
 		<title>Profil de <?php echo $userinfo['pseudo']?></title>
@@ -50,7 +91,9 @@ if(isset($_SESSION['id']))
 	<body>
 		<div align="center">
 			<h2>Edition de mon profil</h2>
-			<form method="POST" action="">
+			<form method="POST" action="" enctype="multipart/form-data">
+                <label>Avatar :</label>
+                <input type="file" name="avatar"/><br /><br />
                 <label>Pseudo :</label>
                 <input  type ="text" name="newpseudo" placeholder="Pseudo" value="<?php  echo $user['pseudo']; ?>" /> <br /><br />
                 <label>Mail :</label>
@@ -60,6 +103,8 @@ if(isset($_SESSION['id']))
                 <label>Confirmation - mot de passe :</label>
                 <input  type ="password" name="newmdp2" placeholder="Confirmation du mot de passe"/> <br /><br />
                 <input type="submit" value="Mettre à jour mon profil">
+                
+                
             </form>
             <?php if(isset($msg)) { echo $msg;} ?>
 		</div>
