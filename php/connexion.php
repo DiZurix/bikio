@@ -39,7 +39,7 @@ if(isset ($_POST['formconnect']))
   <title>Connexion</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans:400,600'>
 
       <link rel="stylesheet" href="..\css\Formulaire.css">
