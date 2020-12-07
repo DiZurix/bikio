@@ -48,6 +48,8 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 			<a href="editionprofil.php">Editer mon profil</a>
 			<br/>
 			<a href="deconnexion.php">Se déconnecter</a>
+			<br/>
+			<a href="..\html\indexconnection.html">page d'acceuil</a>
 			<?php
 			}
 			?>

@@ -1,13 +1,11 @@
 <?php
 session_start();
-
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=bikio', 'root', '');
 if(isset($_SESSION['id']))
 {
     $requser = $bdd->prepare("SELECT * FROM membres WHERE id = ?");
     $requser->execute(array($_SESSION['id']));
     $user = $requser ->fetch();
-
     if(isset($_POST['newpseudo']) AND !empty($_POST['newpseudo']) AND $_POST['newpseudo'] != $user['pseudo'])
     {
         $newpseudo = htmlspecialchars($_POST['newpseudo']);
@@ -15,20 +13,35 @@ if(isset($_SESSION['id']))
         $insertpseudo->execute(array($newpseudo, $_SESSION['id']));
         header('Location: profil.php?id='.$_SESSION['id']);
     }
-
     if(isset($_POST['newmail']) AND !empty($_POST['newmail']) AND $_POST['newmail'] != $user['email'])
     {
         $newmail = htmlspecialchars($_POST['newmail']);
-        $insertmail = $bdd ->prepare("UPDATE membres SET email = ? WHERE id = ?");
-        $insertmail->execute(array($newmail, $_SESSION['id']));
-        header('Location: profil.php?id='.$_SESSION['id']);
+        if(filter_var($newmail, FILTER_VALIDATE_EMAIL))
+        {
+            $stmt = $bdd->prepare("SELECT * FROM membres WHERE email=?");
+            $stmt->execute([$newmail]); 
+            $user = $stmt->fetch();
+            if ($user) {
+                $msg = "L'adresse e-mail est déjà dans la base de données";
+                // email existe
+            }
+            else
+            {
+                $insertmail = $bdd ->prepare("UPDATE membres SET email = ? WHERE id = ?");
+                $insertmail->execute(array($newmail, $_SESSION['id']));
+                header('Location: profil.php?id='.$_SESSION['id']);
+            }
+            
+        }
+        else
+        {
+            $msg = "L'adresse e-mail n'est pas valide";
+        }
     }
-
     if(isset($_POST['newmdp1']) AND !empty($_POST['newmdp1']) AND isset($_POST['newmdp2']) AND !empty($_POST['newmdp2']))
     {
         $mdp1 = sha1($_POST['newmdp1']);
         $mdp2 = sha1($_POST['newmdp2']);
-
         if($mdp1 == $mdp2)
         {
             $insertmdp = $bdd->prepare("UPDATE membres SET password = ? WHERE id = ?");
@@ -40,7 +53,6 @@ if(isset($_SESSION['id']))
             $msg =" vos deux mots de passes ne correspondent pas";
         }
     }
-
     if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])) {
         $tailleMax = 2097152;
         $extensionsValides = array('jpg', 'jpeg', 'gif', 'png');
@@ -102,9 +114,7 @@ if(isset($_SESSION['id']))
                 <input  type ="password" name="newmdp1" placeholder="Mot de passe"/> <br /><br />
                 <label>Confirmation - mot de passe :</label>
                 <input  type ="password" name="newmdp2" placeholder="Confirmation du mot de passe"/> <br /><br />
-                <input type="submit" value="Mettre à jour mon profil">
-                
-                
+                <input type="submit"  value="Mettre à jour mon profil">  
             </form>
             <?php if(isset($msg)) { echo $msg;} ?>
 		</div>
