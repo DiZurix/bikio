@@ -1,5 +1,6 @@
 <?php
 	$bdd = new PDO('mysql:host=127.0.0.1;dbname=bikio', 'root', '');
+
 	if(isset($_POST['forminscription']))
 	{
 		$pseudo = htmlspecialchars($_POST['pseudo']);
@@ -59,6 +60,7 @@
 		}	
 	}
 ?>
+
 <html>
 	<head>
 		<meta charset="UTF-8">
