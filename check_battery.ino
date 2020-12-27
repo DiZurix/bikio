@@ -1,3 +1,4 @@
+//Definition de pin
 const int BATTERYPIN = A0; //Pin de la batterie
 
 const float TensionMax = 4.2; //Tension maximale de notre batterie
