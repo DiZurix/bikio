@@ -1,11 +1,15 @@
 * {
     margin: 0;
     padding: 0;
+    
 }
 
 body {
     font-family: Arial, sans-serif;
     font-size: 15px;
+    display:table;
+    height: 100%;
+    width: 100%;
 }
 
 h1 {
@@ -51,10 +55,11 @@ a {
 }
 
 .wrapper {
-    width: 940px;
+    width: 50%;
     margin: 0 auto;
     padding: 0 10px;
 }
+
 
 .bleu {
     color: rgb(226, 111, 66);
@@ -245,22 +250,34 @@ input[type="text"] {
     color: #fff;
     background-color: #444 ;
 }
-
-footer {
-    height: 260px;
-    background-color: #444;
+.wrapper2s{
+    height: auto;
+}
+/*le bas de la page*/
+.content {
+    position : relative;
 }
 
+footer {
+    background:#444;
+    position : absolute;
+    bottom : 0;
+    width:100%;
+    padding-top:0px;
+    height: 150px;
+
+ 
+}
 footer h1 {
     color: #fff;
     text-align: center;
-    padding-top: 80px;
+    padding-top: 1%;
 }
 
 .copy {
     text-align: center;
     font-weight: bold;
-    padding-top: 30px;
+    padding-top: 20px;
     color: #777777;
 }
 

@@ -55,7 +55,9 @@
         $msg = "Vos deux mots de passes ne correspondent pas.";
       }
     }
-
+    $prenom = $user['pseudo'];
+    $premiere_lettre = $prenom[0];
+    
     if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name']))
     {
       $tailleMax = 2097152;
