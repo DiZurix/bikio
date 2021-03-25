@@ -14,7 +14,8 @@
     $(window).resize(function() {
       if ($(window).height() < 500 && $(window).width() > 500) {
         $('#overlay').addClass('short');
-      } else {
+      }
+      else {
         $('#overlay').removeClass('short');
       }
       return $('#overlay-background').height(calculateHeight());
@@ -27,5 +28,4 @@
       return $('#overlay').removeClass('open');
     });
   });
-
 }).call(this);

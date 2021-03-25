@@ -1,6 +1,6 @@
 <?php
-session_start();
-$_SESSION = array();
-session_destroy();
-header('Location: connexion_test.php');
+	session_start();
+	$_SESSION = array();
+	session_destroy();
+	header('Location: ..\html\index.html');
 ?>
