@@ -4,12 +4,13 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=bikio', 'root', '');
 
 if(isset($_POST['forminscription']))
 {
+	if(!empty($_POST['pseudo']) || !empty($_POST['mail']) || !empty($_POST['mail2']) || !empty($_POST['mdp']) || !empty($_POST['mdp2']))
 	$pseudo=htmlspecialchars($_POST['pseudo']);
 	$mail=htmlspecialchars($_POST['mail']);
 	$mail2=htmlspecialchars($_POST['mail2']);
 	$mdp=sha1($_POST['mdp']);
 	$mdp2=sha1($_POST['mdp2']);
-	if(!empty($_POST['pseudo']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2']))
+	
 	{
 
 		$pseudolength=strlen($pseudo);
