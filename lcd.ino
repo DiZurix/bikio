@@ -1,11 +1,6 @@
 //Importation des libraries
 
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
 
-#define OLED_RESET 4
-
-Adafruit_SSD1306 display(OLED_RESET);
 
 #if (SSD1306_LCDHEIGHT != 64)
 #endif
@@ -51,33 +46,28 @@ int lcd_logo() {    //On définit une fonction qui va afficher le logo
 }
 
 int resize_txt(const char* text) { //On définit une fonction qui va permettre de recentrer le texte entrée dans notre LCD
-    return (128/2 - (strlen(text)+1)*3); 
+    return (128/2 - (strlen(text))*2); 
     /*Notre écran LCD fait 128 pixels de largeur, donc on prend la moitié et on récupère la taille du texte qu'on va
-    multiplier par trois et soustraire les deux valeurs ensemble*/
+    multiplier par deux et soustraire les deux valeurs ensemble*/
 }
 
 int lcd_txt(int status) { //On définit une fonction qui va afficher du texte sur notre LCD
-    char* text1;
-    char* text2;
-    char* text3;
-    if (status == 0){ //Si la carte RFID a été detecté
-        text1 = "Bienvenue";
-        text2 = "{user}";
-        text3 = "a Bikio";
+    const char* text_begin;
+    const char* text_end;
+    if (status == 0){ //Si la carte RFID a été détecté, afficher:
+        text_begin = "Bienvenue";
+        text_end = "chez Bikio";
     }
-    else { //Si la carte RFID est inconnu.
-        text1 = "Impossible de lire";
-        text2 = "le block demande.";
-        text3 = "Essayez une autre carte";
+    else{ //Si la carte RFID est iconnu, afficher:
+        text_begin = "Erreur ! Impossible"
+        text_end = "de lire la carte !"
     }
     display.clearDisplay(); //On supprime l'ancien affichage présent sur l'afficheur LCD
     display.setTextColor(WHITE);    //On définit la couleur du texte en blanc
     display.setTextSize(1);     //On définit la taille du texte à 1.
-    display.setCursor(resize_txt(text1), 0); //On se place au centre en haut de notre afficheur LCD
-    display.println(text1);    //On affiche le texte de bienvenue
-    display.setCursor(resize_txt(text2), 12);    //On se place au centre de notre afficheur LCD
-    display.println(text2); //On affiche le nom de l'utilisateur
-    display.setCursor(resize_txt(text3), 24);    //On se place au centre en bas de notre afficheur LCD
-    display.println(text3); //On affiche la fin du message
+    display.setCursor(resize_txt(text_begin), 8); //On se place au centre en haut de notre afficheur LCD
+    display.println(text_begin);    //On affiche le texte de bienvenue
+    display.setCursor(resize_txt(text_end), 20);    //On se place au centre en bas de notre afficheur LCD
+    display.println(text_end); //On affiche la fin du message
     display.display();  //On affiche tout dans le lecteur LCD
 }

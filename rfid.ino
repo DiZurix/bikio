@@ -7,6 +7,13 @@
 #define PN532_IRQ   (2)
 #define PN532_RESET (3)
 
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define OLED_RESET 4
+
+Adafruit_SSD1306 display(OLED_RESET);
+
 Adafruit_PN532 nfc(PN532_IRQ, PN532_RESET);
 
 //Definition des pins
@@ -66,11 +73,11 @@ void loop(void) {
     
     if (uidLength == 4) {
       // On a surement une carte "Mifare Classic"...
-      Serial.println("Carte Mifare Classic détectée (4 octects UID)");
+      Serial.println("Carte Mifare Classic detectee (4 octects UID)");
 	  
       // On doit maintenant l'authentifier pour accéder aux lecture/écriture
       // Essaie avec la clé par défaut d'usine KeyA: 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF
-      Serial.println("Tentative d'authentification avec le bloc 4 avec une clé KeyA");
+      Serial.println("Tentative d'authentification avec le bloc 4 avec une cle KeyA");
       uint8_t keya[6] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
 	  
 	    // Essaie avec le block 4 (premier block du secteur 1) depuis secteur 0
@@ -79,7 +86,7 @@ void loop(void) {
       success = nfc.mifareclassic_AuthenticateBlock(uid, uidLength, 4, 0, keya);
 	  
       if (success) {
-        Serial.println("Le secteur 1 (Blocs 4..7) a été authentifié");
+        Serial.println("Le secteur 1 (Blocs 4..7) a ete authentifie");
         uint8_t data[16];
         int uid_verifnfc[5] = {'b', 'i', 'k', 'i', 'o'}; //Valeur pour stocker l'IUD du tag RFID
         int good_uid = 0; // Valeur qui permet de savoir si le tag RFID est bon
@@ -102,13 +109,14 @@ void loop(void) {
             }
           }
           if (good_uid >= 5) { //S'il possède le tag, on affiche un message de bienvenue et on active la led verte.
-            Serial.println("Le tag RFID a été reconnu");
-            lcd_txt();  //On appelle la fonction qui permettra d'afficher le message de bienvenue.
-            SWITCH_LED(GREEN_LED); //On appelle la fonction qui permettra d'allumer la led verte.
+            Serial.println("Le tag RFID a ete reconnu");
+            SWITCH_LED(GREEN_LED);
+            lcd_txt(0);
           }
           else { //Sinon, on active la led rouge
-            Serial.println("Le tag RFID n'a pas été reconnu");
+            Serial.println("Le tag RFID n'a pas ete reconnu");
             SWITCH_LED(RED_LED);
+            lcd_txt(1);
           }
           // Attendre un peu avant de relire la carte
           delay(1000);
