@@ -59,8 +59,8 @@ int lcd_txt(int status) { //On définit une fonction qui va afficher du texte su
         text_end = "chez Bikio";
     }
     else{ //Si la carte RFID est iconnu, afficher:
-        text_begin = "Erreur ! Impossible"
-        text_end = "de lire la carte !"
+        text_begin = "Erreur ! Impossible";
+        text_end = "de lire la carte !";
     }
     display.clearDisplay(); //On supprime l'ancien affichage présent sur l'afficheur LCD
     display.setTextColor(WHITE);    //On définit la couleur du texte en blanc
